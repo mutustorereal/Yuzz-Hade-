@@ -300,7 +300,13 @@
         const data = result.data;
         currentTransactionId = data.transaction_id;
         
-        qrImage.src = data.qr_image;
+        if (qrImage) {
+    qrImage.src = data.qr_image;
+    qrImage.onerror = function() {
+        // Fallback jika gambar gagal dimuat
+        this.src = 'https://via.placeholder.com/250x250/000000/d4af37?text=QRIS+Error';
+        console.error('QR image failed to load');
+    }
         qrAmount.textContent = formatRupiah(data.amount);
         qrTransactionId.textContent = data.transaction_id;
         qrExpired.textContent = data.expires_at;
