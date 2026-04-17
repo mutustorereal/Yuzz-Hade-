@@ -44,7 +44,7 @@
     <!-- Anti-Clickjacking -->
     <style id="antiClickjack">body{display:none !important;}</style>
     
-    <title>🔒 Yuzz Hade · SUPER HD</title>
+    <title> Yuzz Hade · SUPER HD</title>
     
     <!-- External CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -192,19 +192,25 @@
             </div>
 
             <div class="dual-upload">
-                <div class="upload-card" id="videoUploadCard">
-                    <i class="fas fa-clapperboard upload-icon"></i><h3>Video</h3>
-                    <div class="upload-limit"><i class="far fa-file-video"></i> max 100MB</div>
-                    <button class="upload-btn" id="videoUploadBtn"><i class="fas fa-cloud-upload-alt"></i> Pilih Video</button>
-                    <input type="file" id="videoInput" accept="video/*">
-                </div>
-                <div class="upload-card" id="photoUploadCard">
-                    <i class="fas fa-camera upload-icon"></i><h3>Foto</h3>
-                    <div class="upload-limit"><i class="far fa-image"></i> max 50MB</div>
-                    <button class="upload-btn" id="photoUploadBtn"><i class="fas fa-cloud-upload-alt"></i> Pilih Foto</button>
-                    <input type="file" id="photoInput" accept="image/*">
-                </div>
-            </div>
+        <div class="upload-card" id="videoUploadCard">
+    <i class="fas fa-clapperboard upload-icon"></i>
+    <h3>Video</h3>
+    <div class="upload-limit"><i class="far fa-file-video"></i> max 100MB</div>
+    <button class="upload-btn" id="videoUploadBtn" type="button">
+        <i class="fas fa-cloud-upload-alt"></i> Pilih Video
+    </button>
+    <input type="file" id="videoInput" accept="video/*" style="display:none;">
+</div>
+
+         <div class="upload-card" id="photoUploadCard">
+    <i class="fas fa-camera upload-icon"></i>
+    <h3>Foto</h3>
+    <div class="upload-limit"><i class="far fa-image"></i> max 50MB</div>
+    <button class="upload-btn" id="photoUploadBtn" type="button">
+        <i class="fas fa-cloud-upload-alt"></i> Pilih Foto
+    </button>
+    <input type="file" id="photoInput" accept="image/*" style="display:none;">
+</div>
 
             <div class="progress-container" id="progressContainer">
                 <div class="progress-bar"><div class="progress-fill-main" id="progressFillMain"></div></div>
