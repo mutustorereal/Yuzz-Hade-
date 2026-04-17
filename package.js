@@ -1,13 +1,9 @@
 {
   "name": "yuzz-hade",
   "version": "1.0.0",
-  "description": "Yuzz Hade SUPER HD",
-  "main": "index.html",
+  "description": "Yuzz Hade SUPER HD"
   "dependencies": {
     "axios": "^1.6.0",
     "moment-timezone": "^0.5.43"
-  },
-  "engines": {
-    "node": ">=18.x"
   }
 }
