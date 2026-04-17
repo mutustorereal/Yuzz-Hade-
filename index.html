@@ -2,31 +2,73 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
     <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
     <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
     
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <!-- Anti-Copy/Scraping Protection -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, nocache">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="bingbot" content="noindex, nofollow, noarchive">
+    <meta name="slurp" content="noindex, nofollow">
+    <meta name="msnbot" content="noindex, nofollow">
+    <meta name="teoma" content="noindex, nofollow">
+    
+    <!-- Anti-Downloader Tools -->
     <meta name="download" content="no">
     <meta name="save" content="no">
+    <meta name="zip" content="no">
+    <meta name="getcode" content="no">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0, private">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Content Security Policy (Strict) -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+        img-src 'self' data: blob: https:;
+        media-src 'self' data: blob:;
+        connect-src 'self' https:;
+        frame-src 'none';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    
+    <!-- Anti-Clickjacking -->
+    <style id="antiClickjack">body{display:none !important;}</style>
     
     <title>🔒 Yuzz Hade · SUPER HD</title>
     
-    <!-- Fonts -->
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
     
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/jimp@0.22.12/browser/lib/jimp.min.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.min.js"></script>
 </head>
 <body>
+
+<!-- Anti-Clickjacking Script (Inline - Critical) -->
+<script>
+    if (self === top) {
+        document.getElementById('antiClickjack').remove();
+    } else {
+        top.location = self.location;
+    }
+</script>
 
 <!-- Security Alert -->
 <div class="security-alert" id="securityAlert"><i class="fas fa-shield-alt"></i> Tindakan tidak diizinkan!</div>
@@ -154,17 +196,17 @@
                     <i class="fas fa-clapperboard upload-icon"></i><h3>Video</h3>
                     <div class="upload-limit"><i class="far fa-file-video"></i> max 100MB</div>
                     <button class="upload-btn" id="videoUploadBtn"><i class="fas fa-cloud-upload-alt"></i> Pilih Video</button>
-                    <input type="file" id="videoInput" accept="video/*" style="display:none;">
+                    <input type="file" id="videoInput" accept="video/*">
                 </div>
                 <div class="upload-card" id="photoUploadCard">
                     <i class="fas fa-camera upload-icon"></i><h3>Foto</h3>
                     <div class="upload-limit"><i class="far fa-image"></i> max 50MB</div>
                     <button class="upload-btn" id="photoUploadBtn"><i class="fas fa-cloud-upload-alt"></i> Pilih Foto</button>
-                    <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                    <input type="file" id="photoInput" accept="image/*">
                 </div>
             </div>
 
-            <div class="progress-container" id="progressContainer" style="display:none;">
+            <div class="progress-container" id="progressContainer">
                 <div class="progress-bar"><div class="progress-fill-main" id="progressFillMain"></div></div>
                 <div class="progress-text-main" id="progressTextMain">Memproses...</div>
             </div>
@@ -172,7 +214,7 @@
             <div class="preview-area">
                 <div class="preview-header"><h4><i class="fas fa-crown" style="color:var(--gold);"></i> Hasil SUPER HD</h4><span id="totalSizeDisplay">0 MB</span></div>
                 <div class="media-preview-container" id="mediaContainer">
-                    <div style="color:#8f846e;padding:30px;"><i class="fas fa-arrow-up"></i> Upload media — Klik Pilih Video atau Pilih Foto</div>
+                    <div style="color:#8f846e;padding:30px;"><i class="fas fa-arrow-up"></i> Upload media</div>
                 </div>
             </div>
         </div>
@@ -181,9 +223,9 @@
             <div class="footer-content">
                 <div class="footer-logo">Yuzz<span style="color:var(--gold);"> Hade</span> <i class="fas fa-shield"></i></div>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i> @yuzzhade</a>
-                    <a href="#" class="social-link"><i class="fab fa-telegram"></i> Telegram</a>
-                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-instagram"></i> @yuzzhade</a>
+                    <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
                 <div class="copyright"><p>© 2026 Yuzz Hade · <span class="heart">❤️</span> by <span class="developer">Mutz</span></p></div>
             </div>
@@ -191,7 +233,7 @@
     </main>
 </div>
 
-<!-- JavaScript -->
+<!-- External JavaScript -->
 <script src="js/main.js"></script>
 </body>
     </html>
